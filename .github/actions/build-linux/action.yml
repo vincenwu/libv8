@@ -38,6 +38,16 @@ runs:
 
         echo "CCACHE_DIR=$ccacheDir" >> "$GITHUB_ENV"
 
+    - name: Setup Clang
+      env:
+        LLVM_VERSION: 16
+      shell: bash
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh
+        sudo apt-get install libc++-${LLVM_VERSION}-dev libc++abi-${LLVM_VERSION}-dev
+
     - name: Download V8 Source
       shell: bash
       run: ./v8_download.sh
