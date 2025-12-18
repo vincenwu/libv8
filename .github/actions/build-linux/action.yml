@@ -45,7 +45,7 @@ runs:
       run: |
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
-        sudo ./llvm.sh
+        sudo ./llvm.sh ${LLVM-VERSION}
         sudo apt-get install libc++-${LLVM_VERSION}-dev libc++abi-${LLVM_VERSION}-dev
 
     - name: Download V8 Source
