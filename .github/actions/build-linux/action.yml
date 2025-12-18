@@ -52,6 +52,7 @@ runs:
         chmod +x llvm.sh
         sudo ./llvm.sh ${LLVM_VERSION}
         sudo apt-get install libc++-${LLVM_VERSION}-dev libc++abi-${LLVM_VERSION}-dev
+        echo "LLVM_VERSION=$LLVM_VERSION" >> "$GITHUB_ENV"
 
     - name: Download V8 Source
       shell: bash
@@ -59,6 +60,8 @@ runs:
 
     - name: Compile V8
       shell: bash
+      env:
+        LLVM_VERSION: ${{ env.LLVM_VERSION }}
       run: ./v8_compile.sh
 
     - name: Show CCache Status
