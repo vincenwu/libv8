@@ -1,0 +1,6 @@
+import("//build/toolchain/gcc_toolchain.gni")
+
+clang_toolchain("clang-libc++") {
+  extra_cxxflags = "-stdlib=libc++"
+  extra_ldflags = "-stdlib=libc++"
+}

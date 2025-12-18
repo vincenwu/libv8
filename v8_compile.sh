@@ -46,6 +46,8 @@ cc_wrapper=\"$cc_wrapper\""
 
 if [ -n "${LLVM_VERSION:-}" ]; then
     gn_args="$gn_args clang_base_path=\"/usr/lib/llvm-${LLVM_VERSION}\""
+    gn_args="$gn_args custom_toolchain=\"//../toolchain:clang-libc++\""
+    gn_args="$gn_args host_toolchain=\"//../toolchain:clang-libc++\""
 fi
 
 cd "${dir}/v8"
