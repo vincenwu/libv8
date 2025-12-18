@@ -44,6 +44,10 @@ fi
 gn_args="$(grep -v "^#" "${dir}/args/${os}.gn" | grep -v "^$")
 cc_wrapper=\"$cc_wrapper\""
 
+if [ -n "${LLVM_VERSION:-}" ]; then
+    gn_args="$gn_args clang_base_path=\"/usr/lib/llvm-${LLVM_VERSION}\""
+fi
+
 cd "${dir}/v8"
 
 gn gen "./out/release" --args="$gn_args"
