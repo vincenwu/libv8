@@ -53,7 +53,7 @@ jobs:
           archive-name: v8_${{ runner.os }}_amd64
 
       - name: Archive V8 Library
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: |
             *.tar.xz
